@@ -502,7 +502,7 @@ def compraMedicamento(name):
                                 "Precio":Medicamento.getPrecio(),
                                 "Cantidad": comprado.getCantidad(),
                                 "Subtotal": (Medicamento.getPrecio()*comprado.getCantidad()),
-                                "Mensaje": "Agregado "
+                                "Mensaje": "Agregado"
                             }
                         elif int(comprado.getCantidad()) >= int(Medicamento.getCantidad()):
                             objeto={
