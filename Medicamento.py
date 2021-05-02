@@ -1,5 +1,5 @@
 class Medicamento:
-    numero_vendidos = 0
+    
     
     
     def __init__(self, id, nombre, descripcion, precio, cantidad):
@@ -8,6 +8,7 @@ class Medicamento:
         self.descripcion = descripcion
         self.precio = precio
         self.cantidad = cantidad
+        self.numero_vendidos = 0
     
     def getId(self):
         return self.id
