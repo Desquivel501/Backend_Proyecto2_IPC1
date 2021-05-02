@@ -603,6 +603,7 @@ def pedido():
                 datos.append(objeto)
     
     compra_actual = []
+    
     return jsonify(datos)
 
 
