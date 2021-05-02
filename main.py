@@ -586,7 +586,7 @@ def pedido():
             if compra.getId_paciente() == user.getUser_name():
                 nombre_paciente = user.getNombre() + " " + user.getApellido()
         for med in Medicamentos:
-            if med.getId() == compra.getId():
+            if med.getId() == compra.getId_med():
                 med.setNumeroVendidos(med.getNumeroVendidos()+1)
       
                 
