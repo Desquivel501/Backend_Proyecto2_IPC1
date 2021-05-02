@@ -504,6 +504,7 @@ def compraMedicamento(name):
                                 "Subtotal": (Medicamento.getPrecio()*comprado.getCantidad()),
                                 "Mensaje": "Agregado"
                             }
+                            
                         elif int(comprado.getCantidad()) >= int(Medicamento.getCantidad()):
                             objeto={
                                  "Mensaje": "No hay existencias"
@@ -511,17 +512,23 @@ def compraMedicamento(name):
     elif agregado == False:
         for Medicamento in Medicamentos:
             if name == Medicamento.getNombre():
-                nuevo = Comprado(Medicamento.getId(),user_name,1)
-                compra_actual.append(nuevo)
+                if Medicamento > 0:
+                    nuevo = Comprado(Medicamento.getId(),user_name,1)
+                    compra_actual.append(nuevo)
+                    
+                    objeto={
+                        "id": Medicamento.getId(),
+                        "Nombre": name,
+                        "Precio":Medicamento.getPrecio(),
+                        "Cantidad": 1,
+                        "Subtotal": Medicamento.getPrecio(),
+                        "Mensaje": "Nuevo"
+                    }
+                else:
+                    objeto={
+                        "Mensaje": "No hay existencias"
+                    }
                 
-                objeto={
-                    "id": Medicamento.getId(),
-                    "Nombre": name,
-                    "Precio":Medicamento.getPrecio(),
-                    "Cantidad": 1,
-                    "Subtotal": Medicamento.getPrecio(),
-                    "Mensaje": "Nuevo"
-                }
     return jsonify(objeto)
 
 @app.route("/Med/<string:name>/quitar", methods=["POST"])
