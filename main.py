@@ -593,6 +593,7 @@ def pedido():
     for comprado in compra_actual:
         for Medicamento in Medicamentos:
             if comprado.getId_med() == Medicamento.getId():
+                Medicamento.setCantidad(Medicamento.getCantidad()-comprado.getCantidad())
                 objeto = {
                     "Nombre":Medicamento.getNombre(),
                     "Descripcion":Medicamento.getDescripcion(),
@@ -908,7 +909,7 @@ def verCitas(name):
         "Mensaje":"No existe"  
     }
     
-    Doc_name = " "
+    Doc_name = ""
     
     for Usuario in Usuarios:
         if Usuario.getUser_name() == name:
