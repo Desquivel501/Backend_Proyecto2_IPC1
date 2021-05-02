@@ -5,6 +5,7 @@ from Usuario import Usuario, Doctor, Enfermera, Admin
 from Medicamento import Medicamento, Comprado 
 from  Cita import Cita
 from Factura import Factura
+from Enfermerdades import Enfermedad
 import json
 
 x = datetime.datetime.now()
@@ -592,15 +593,13 @@ def pedido():
         for user in Usuarios:
             if compra.getId_paciente() == user.getUser_name():
                 nombre_paciente = user.getNombre() + " " + user.getApellido()
-        for med in Medicamentos:
-            if med.getId() == compra.getId_med():
-                med.setNumeroVendidos(med.getNumeroVendidos()+1)
       
                 
     for comprado in compra_actual:
         for Medicamento in Medicamentos:
             if comprado.getId_med() == Medicamento.getId():
                 Medicamento.setCantidad(Medicamento.getCantidad()-comprado.getCantidad())
+                Medicamento.setNumeroVendidos(comprado.getCantidad())
                 objeto = {
                     "Nombre":Medicamento.getNombre(),
                     "Descripcion":Medicamento.getDescripcion(),
@@ -1091,6 +1090,36 @@ def agregarFactura():
     }
     
     return jsonify(newObj)
+
+
+
+""" @app.route("/receta", methods=["POST"])
+def receta():
+    global Usuarios
+    global Doctores
+    global Enfermeras
+    global Facturas
+    
+    user_exist = False
+    fecha = request.json['fecha']
+    paciente = request.json['paciente']
+    doctor = request.json['doctor']
+    total = request.json['total']
+
+    nuevo = Factura(len(Facturas)+1,fecha,paciente,doctor,total)
+    Facturas.append(nuevo)
+    
+    newObj={
+        "fecha":fecha,
+        "paciente":paciente,
+        "doctor": doctor,
+        "total":total,
+    }
+    
+    return jsonify(newObj) """
+
+
+
 
 
 if __name__ == "__main__":
