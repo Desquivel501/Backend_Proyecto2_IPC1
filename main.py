@@ -572,7 +572,7 @@ def compraMed(name):
     return jsonify(objeto)
 
 
-@app.route("/pedido", methods=["POST"])
+@app.route("/pedido", methods=["GET"])
 def pedido():
     global Medicamentos
     global Usuarios
