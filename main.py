@@ -573,7 +573,7 @@ def compraMed(name):
 
 
 @app.route("/pedido", methods=["POST"])
-def compraMed():
+def pedido():
     global Medicamentos
     global Usuarios
     global compra_actual
@@ -584,13 +584,13 @@ def compraMed():
     for compra in compra_actual:
         for user in Usuarios:
             if compra.getId_paciente() == user.getUser_name():
-                nombre_paciente = user.getNombre() + " " user.getApellido()
+                nombre_paciente = user.getNombre() + " " + user.getApellido()
         for med in Medicamentos:
             if med.getId() == compra.getId():
                 med.setNumeroVendidos(med.getNumeroVendidos()+1)
       
                 
-   for comprado in compra_actual:
+    for comprado in compra_actual:
         for Medicamento in Medicamentos:
             if comprado.getId_med() == Medicamento.getId():
                 objeto = {
