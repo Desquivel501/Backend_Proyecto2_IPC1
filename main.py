@@ -417,6 +417,7 @@ def getAdmin(username):
 
 
 compra_actual=[]
+compra_total=[]
 
 
 @app.route("/Med", methods=["GET"])
@@ -565,9 +566,44 @@ def compraMed(name):
                 "Precio":Medicamento.getPrecio(),
                 "Cantidad":Medicamento.getCantidad()
             }
+            Medicamento. setNumeroVendidos(Medicamento.getNumeroVendidos()+1)
             break
         
     return jsonify(objeto)
+
+
+@app.route("/pedido", methods=["POST"])
+def compraMed():
+    global Medicamentos
+    global Usuarios
+    global compra_actual
+    
+    datos=[]
+    
+    nombre_paciente = ""
+    for compra in compra_actual:
+        for user in Usuarios:
+            if compra.getId_paciente() == user.getUser_name():
+                nombre_paciente = user.getNombre() + " " user.getApellido()
+        for med in Medicamentos:
+            if med.getId() == compra.getId():
+                med.setNumeroVendidos(med.getNumeroVendidos()+1)
+      
+                
+   for comprado in compra_actual:
+        for Medicamento in Medicamentos:
+            if comprado.getId_med() == Medicamento.getId():
+                objeto = {
+                    "Nombre":Medicamento.getNombre(),
+                    "Descripcion":Medicamento.getDescripcion(),
+                    "Precio": Medicamento.getPrecio(),
+                    "Cantidad":comprado.getCantidad(),
+                    "Paciente":nombre_paciente
+                }
+                datos.append(objeto)
+    
+
+    return jsonify(datos)
 
 
 @app.route("/compras", methods=["GET"])
