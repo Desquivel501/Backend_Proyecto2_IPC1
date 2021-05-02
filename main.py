@@ -16,7 +16,7 @@ Usuarios = []
 Usuarios.append(Usuario(0,"Derek","Esquivel","2002-04-09","M","Desquivel501","password","22000000"))
 Usuarios.append(Usuario(1,"Mark","White","2007-06-01","M","MK69","1234","22340002"))
 Usuarios.append(Usuario(2,"Michael","Adams","2000-05-10","M","Mike10","1234","22585000"))
-Usuarios.append(Usuario(3,"Zoey","Dean","F","1994-08-21","ZzDn123","1234","22534239"))
+Usuarios.append(Usuario(3,"Zoey","Dean","1994-08-21","M","ZzDn123","1234","22534239"))
 Usuarios.append(Usuario(4,"Lucy","Goodman","1999-02-02","F","LuGo12","1234","25694782"))
 
 Enfermeras = []
