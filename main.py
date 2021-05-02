@@ -512,7 +512,7 @@ def compraMedicamento(name):
     elif agregado == False:
         for Medicamento in Medicamentos:
             if name == Medicamento.getNombre():
-                if Medicamento > 0:
+                if Medicamento.getCantidad() > 0:
                     nuevo = Comprado(Medicamento.getId(),user_name,1)
                     compra_actual.append(nuevo)
                     
