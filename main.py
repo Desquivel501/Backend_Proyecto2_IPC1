@@ -687,7 +687,7 @@ def login():
 @app.route("/carga_pacientes", methods=["POST"])
 def cargaUsuarios():
     global Usuarios
-    fecha = request.json["usuarios"]
+    usuariosCM = request.json["usuarios"]
     
     for usuario in usuariosCM:
         nuevo = Usuario(len(Usuarios)+1,usuario['Nombre'],usuario['Apellido'],usuario['Fecha'],usuario['Sexo'],usuario['User_name'],usuario['Password'],usuario['Telefono'])
