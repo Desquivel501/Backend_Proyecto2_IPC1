@@ -513,7 +513,7 @@ def compraMedicamento(name):
     elif agregado == False:
         for Medicamento in Medicamentos:
             if name == Medicamento.getNombre():
-                if Medicamento.getCantidad() > 0:
+                if int(Medicamento.getCantidad()) > 0:
                     nuevo = Comprado(Medicamento.getId(),user_name,1)
                     compra_actual.append(nuevo)
                     
@@ -1135,12 +1135,17 @@ def receta(nombre):
 @app.route("/top_med", methods=["GET"])
 def topMedicinas():
     global Medicamentos
+    
+    x = 5
+    
+    if len(Medicamentos)<5:
+        x = len(Medicamentos)
  
     aux = sorted(Medicamentos,key=lambda medicamento: medicamento.numero_vendidos)
     Datos=[]
     
-    for x in range(5):
-        Datos.append(aux[x])
+    for i in range(x):
+        Datos.append(aux[i])
         
     return jsonify(Datos)
 
