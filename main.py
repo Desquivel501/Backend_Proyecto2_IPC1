@@ -7,6 +7,7 @@ from  Cita import Cita
 from Factura import Factura
 from Enfermedades import Enfermedad
 import json
+from operator import attrgetter
 
 x = datetime.datetime.now()
 
