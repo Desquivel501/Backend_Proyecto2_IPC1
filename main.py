@@ -968,6 +968,7 @@ def aceptarCita(id):
     for doc in Doctores:
         if doctor == doc.getUser_name():
             Doc_name = doc.getNombre() + " " + doc.getApellido()
+            doc.setNumeroCitas(doc.getNumeroCitas()+1)
             print(Doc_name)
     
  
@@ -976,6 +977,7 @@ def aceptarCita(id):
             print("here")
             Cita.setEstado("Aceptada")
             Cita.setDoctor(doctor)
+            
        
             obj={
                 "Mensaje":"Se ha aceptado la cita" ,
