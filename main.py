@@ -36,10 +36,10 @@ Doctores.append(Doctor(3,"William ","Garcia","1990-03-08","M","WillyG","password
 Doctores.append(Doctor(4,"Olivia ","Brown ","1979-09-29","F","Liv3","password","22230010",2))
 
 Medicamentos = []
-Medicamentos.append(Medicamento(0,"Panadol","Lorem ipsum dolor sit amet",50,12))
-Medicamentos.append(Medicamento(1,"Omeprazol","Lorem ipsum dolor sit amet",30,23))
-Medicamentos.append(Medicamento(2,"Dorival","Lorem ipsum dolor sit amet",15,6))
-Medicamentos.append(Medicamento(3,"Aspirina","Lorem ipsum dolor sit amet",19,25))
+Medicamentos.append(Medicamento(0,"Panadol","Lorem ipsum dolor sit amet",50,12,0))
+Medicamentos.append(Medicamento(1,"Omeprazol","Lorem ipsum dolor sit amet",30,23,0))
+Medicamentos.append(Medicamento(2,"Dorival","Lorem ipsum dolor sit amet",15,6,0))
+Medicamentos.append(Medicamento(3,"Aspirina","Lorem ipsum dolor sit amet",19,25,0))
 
 Administrador = Admin("Ariel","Bautista","admin","1234") 
 
@@ -782,7 +782,7 @@ def cargaMedicamentos():
     medicamentosCM = request.json["medicamentos"]
     
     for medicamento in medicamentosCM:
-        nuevo = Medicamento(len(Medicamentos)+1,medicamento['Nombre'],medicamento['Descripcion'],medicamento['Precio'],medicamento['Cantidad'])
+        nuevo = Medicamento(len(Medicamentos)+1,medicamento['Nombre'],medicamento['Descripcion'],medicamento['Precio'],medicamento['Cantidad'],0)
         Medicamentos.append(nuevo)
     
     return jsonify({

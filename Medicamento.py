@@ -1,12 +1,12 @@
 class Medicamento:
     
-    def __init__(self, id, nombre, descripcion, precio, cantidad):
+    def __init__(self, id, nombre, descripcion, precio, cantidad,numero_vendidos):
         self.id = id
         self.nombre = nombre
         self.descripcion = descripcion
         self.precio = precio
         self.cantidad = cantidad
-        self.numero_vendidos = 0
+        self.numero_vendidos = numero_vendidos
     
     def getId(self):
         return self.id
