@@ -1227,7 +1227,7 @@ def topDoctores():
     for doc in Datos:
         objeto={
             "Mensaje":"Completado",
-            "Nombre":doc.getNombre() + " " + doc.getApellido,
+            "Nombre":doc.getNombre() + " " + doc.getApellido(),
             "Cantidad":doc.getNumeroCitas()
         }
         top.append(objeto)
