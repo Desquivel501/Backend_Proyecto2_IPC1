@@ -694,21 +694,29 @@ def loginPost():
         print('existe ' + str(user_type))
         obj={
                 "user_name": username,
-                "type":user_type
+                "type":user_type,
+                "Mensaje":"Existe"
             }
         return jsonify(obj)
               
     elif user_exist == True and pass_exist != True:
         print ("Contraseña Incorrecta")
-        return "Contraseña Incorrecta"
+        return jsonify({
+            "Mensaje":"Contraseña Incorrecta"
+        })
+    
     elif admin_exist == True:
         obj={
                 "user_name": "admin",
-                "type":"admin"
+                "type":"admin",
+                "Mensaje":"Existe"
             }
         return jsonify(obj)
     else:
-        return "Usuario no existe"
+        return jsonify({
+            "Mensaje":"Usuario no existe"
+        })
+
     
     
 
