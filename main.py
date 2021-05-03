@@ -1141,6 +1141,10 @@ def topMedicinas():
     
     if len(Medicamentos)<5:
         x = len(Medicamentos)
+    
+    objeto={
+            "Mensaje":"Error"
+        }
  
     aux = sorted(Medicamentos, key=attrgetter('numero_vendidos'), reverse=True)
     Datos=[]
@@ -1148,7 +1152,16 @@ def topMedicinas():
     for i in range(x):
         Datos.append(aux[i])
         
-    return jsonify(Datos)
+    top =[]
+    for med in Datos:
+        objeto={
+            "Mensaje":"Completado",
+            "Nombre":med.getNombre()
+            "Cantidad":med.getNumeroVendidos()
+        }
+        top.append(objeto)
+        
+    return jsonify(top)
 
 
 
