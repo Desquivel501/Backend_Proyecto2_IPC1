@@ -490,7 +490,7 @@ def borrarMedicamento(id_med):
     aux = []
     
     for Medicamento in Medicamentos:
-        if int(med_id) != int(Medicamento.getId()):
+        if int(id_med) != int(Medicamento.getId()):
             aux.append(Medicamento)
     
     Medicamentos = aux
