@@ -29,11 +29,11 @@ Enfermeras.append(Enfermera(3,"Josh","Dominguez","2001-07-05","M","JoDom12","pas
 Enfermeras.append(Enfermera(4,"Nick","Marx","1999-05-30","F","Commies","password","22529001"))
 
 Doctores = []
-Doctores.append(Doctor(0,"Thomas ","Brown","1979-04-11","M","DocBrown","password","22522221","Cardiologo"))
-Doctores.append(Doctor(1,"James ","Davis ","1985-01-12","M","J1mmy2","password","23269070",2))
-Doctores.append(Doctor(2,"Sophie ","Davis ","1989-12-20","F","Sofi10","password","56236587",0))
-Doctores.append(Doctor(3,"William ","Garcia","1990-03-08","M","WillyG","password","55286900",1))
-Doctores.append(Doctor(4,"Olivia ","Brown ","1979-09-29","F","Liv3","password","22230010",2))
+Doctores.append(Doctor(0,"Thomas ","Brown","1979-04-11","M","DocBrown","password","22522221","Cardiologo",0))
+Doctores.append(Doctor(1,"James ","Davis ","1985-01-12","M","J1mmy2","password","23269070",2,0))
+Doctores.append(Doctor(2,"Sophie ","Davis ","1989-12-20","F","Sofi10","password","56236587",0,0))
+Doctores.append(Doctor(3,"William ","Garcia","1990-03-08","M","WillyG","password","55286900",1,0))
+Doctores.append(Doctor(4,"Olivia ","Brown ","1979-09-29","F","Liv3","password","22230010",2,0))
 
 Medicamentos = []
 Medicamentos.append(Medicamento(0,"Panadol","Lorem ipsum dolor sit amet",50,12,0))
@@ -756,7 +756,7 @@ def cargaDoctores():
     doctoresCM = request.json["doctores"]
     
     for doctor in doctoresCM:
-        nuevo = Doctor(len(Doctores)+1,doctor['Nombre'],doctor['Apellido'],doctor['Fecha'],doctor['Sexo'],doctor['User_name'],doctor['Password'],doctor['Telefono'],doctor['Especialidad'])
+        nuevo = Doctor(len(Doctores)+1,doctor['Nombre'],doctor['Apellido'],doctor['Fecha'],doctor['Sexo'],doctor['User_name'],doctor['Password'],doctor['Telefono'],doctor['Especialidad'],0)
         Doctores.append(nuevo)
     
     return jsonify({
@@ -1110,6 +1110,7 @@ def receta(nombre):
     global Doctores
     global Enfermeras
     global Facturas
+    global Enfermedades
     
     doctor = request.json['doctor']
     agregado = False
@@ -1146,7 +1147,6 @@ def topMedicinas():
     global Medicamentos
     
     x = 5
-    
     if len(Medicamentos)<5:
         x = len(Medicamentos)
     
@@ -1166,6 +1166,35 @@ def topMedicinas():
             "Mensaje":"Completado",
             "Nombre":med.getNombre(),
             "Cantidad":med.getNumeroVendidos()
+        }
+        top.append(objeto)
+        
+    return jsonify(top)
+
+@app.route("/top_enfermedades", methods=["GET"])
+def topEnfermedades():
+    global Enfermedades
+    
+    x = 5
+    if len(Enfermedades)<5:
+        x = len(Enfermedades)
+    
+    objeto={
+            "Mensaje":"Error"
+        }
+ 
+    aux = sorted(Enfermedades, key=attrgetter('cantidad'), reverse=True)
+    Datos=[]
+    
+    for i in range(x):
+        Datos.append(aux[i])
+        
+    top =[]
+    for enf in Datos:
+        objeto={
+            "Mensaje":"Completado",
+            "Nombre":enf.getNombre(),
+            "Cantidad":med.setCantidad()
         }
         top.append(objeto)
         

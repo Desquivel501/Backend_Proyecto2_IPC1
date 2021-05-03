@@ -63,7 +63,7 @@ class Usuario:
     
     
 class Doctor:
-    def __init__(self, id, nombre, apellido,cumpleaños, sexo, user_name, user_pass, telefono, especialidad):
+    def __init__(self, id, nombre, apellido,cumpleaños, sexo, user_name, user_pass, telefono, especialidad,numero_completadas):
         self.id = id
         self.nombre = nombre
         self.apellido = apellido
