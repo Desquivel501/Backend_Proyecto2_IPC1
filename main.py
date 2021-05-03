@@ -415,6 +415,7 @@ def getMedicamentos():
     med_array=[]
     for Medicamento in Medicamentos:
         objeto = {
+            "Id":Medicamento.getId(),
             "Nombre":Medicamento.getNombre(),
             "Descripcion":Medicamento.getDescripcion(),
             "Precio":Medicamento.getPrecio(),
@@ -431,7 +432,7 @@ def addMedicamento():
     descripcion = request.json["Descripcion"]
     precio = request.json["Precio"]
     cantidad = request.json["Cantidad"]
-    nuevo = Medicamento(len(Medicamentos)+1,nombre,descripcion,precio,cantidad)
+    nuevo = Medicamento(len(Medicamentos)+1,nombre,descripcion,precio,cantidad,0)
     med_exist = False
     
     for obj in Medicamentos:
@@ -443,12 +444,35 @@ def addMedicamento():
     elif med_exist == False:
         Medicamentos.append(nuevo)
         return "Med has been succesfully created"
+    
+    
+@app.route("/Med/<string:med_id>", methods=["POST"])
+def cambiarMed(med_id):
+    global Medicamentos
+    
+    nombre = request.json["nombre"]
+    descripcion = request.json["descripcion"]
+    precio = request.json["precio"]
+    cantidad = request.json["cantidad"]
+    
+    for med in Medicamentos:
+        if med.getId() == med_id:
+            med.setNombre(nombre)
+            med.setDescripcion(descripcion)
+            med.setPrecio(precio)
+            med.setCantidad(cantidad)
+    
+    return jsonify({
+            "Mensaje":"Se ha cambiado el medicamento"
+        })
+    
+     
 
-@app.route("/Med/<string:name>", methods=["GET"])
-def getMedicamento(name):
+@app.route("/Med/<string:med_id>", methods=["GET"])
+def getMedicamento(med_id):
     global Medicamentos
     for Medicamento in Medicamentos:
-        if name == Medicamento.getNombre():
+        if med_id == Medicamento.getId():
             objeto = {
                 "Nombre":Medicamento.getNombre(),
                 "Descripcion":Medicamento.getDescripcion(),
@@ -459,6 +483,22 @@ def getMedicamento(name):
         
     return jsonify(objeto)
 
+
+@app.route("/Med/<string:id_med>/borrar", methods=["POST"])
+def borrarMedicamento(id_med):
+    global Medicamentos
+    
+    aux = []
+    
+    for Medicamento in Medicamentos:
+        if id_med != Medicamento.getNombre():
+            aux.append(Medicamento)
+    
+    Medicamentos = aux
+        
+    return jsonify({
+            "Mensaje":"Se ha eliminado el medicamento"
+        })
 
 
 @app.route("/Med/<string:name>/agregar", methods=["POST"])
