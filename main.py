@@ -483,7 +483,6 @@ def getMedicamento(med_id):
         
     return jsonify(objeto)
 
-
 @app.route("/Med/<string:id_med>/borrar", methods=["POST"])
 def borrarMedicamento(id_med):
     global Medicamentos
