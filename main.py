@@ -456,7 +456,7 @@ def cambiarMed(med_id):
     cantidad = request.json["cantidad"]
     
     for med in Medicamentos:
-        if int(med_id) == int(Medicamento.getId()):
+        if int(med_id) == int(med.getId()):
             med.setNombre(nombre)
             med.setDescripcion(descripcion)
             med.setPrecio(precio)
