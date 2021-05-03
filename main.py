@@ -472,7 +472,7 @@ def cambiarMed(med_id):
 def getMedicamento(med_id):
     global Medicamentos
     for Medicamento in Medicamentos:
-        if med_id == Medicamento.getId():
+        if int(med_id )== int(Medicamento.getId()):
             objeto = {
                 "Nombre":Medicamento.getNombre(),
                 "Descripcion":Medicamento.getDescripcion(),
