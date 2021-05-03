@@ -1195,7 +1195,7 @@ def topEnfermedades():
         objeto={
             "Mensaje":"Completado",
             "Nombre":enf.getNombre(),
-            "Cantidad":med.setCantidad()
+            "Cantidad":enf.setCantidad()
         }
         top.append(objeto)
         
