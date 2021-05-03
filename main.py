@@ -1175,6 +1175,7 @@ def topMedicinas():
 def topEnfermedades():
     global Enfermedades
     
+    
     x = 5
     if len(Enfermedades)<5:
         x = len(Enfermedades)
