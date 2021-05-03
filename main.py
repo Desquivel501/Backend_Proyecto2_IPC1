@@ -1059,6 +1059,8 @@ def verCitasDoc(name):
                         "Mensaje":"Existe"  
                     }
                     Datos.append(obj)
+                    
+                    doctor.setNumeroCitas(doctor.getNumeroCitas()+1)
     
     return jsonify(Datos)
 
@@ -1129,6 +1131,18 @@ def receta(nombre):
     return jsonify(obj) 
 
 
+
+@app.route("/top_med", methods=["GET"])
+def topMedicinas():
+    global Medicamentos
+ 
+    aux = sorted(Medicamentos,key=lambda medicamento: medicamento.numero_vendidos)
+    Datos=[]
+    
+    for x in range(5):
+        Datos.append(aux[x])
+        
+    return jsonify(Datos)
 
 
 

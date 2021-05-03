@@ -73,6 +73,7 @@ class Doctor:
         self.user_pass = user_pass
         self.telefono = telefono
         self.especialidad = especialidad
+        self.numero_completadas = 0
     
     def getId(self):
         return self.id
@@ -127,6 +128,12 @@ class Doctor:
     
     def setEspecialidad(self,especialidad):
         self.especialidad = especialidad
+        
+    def getNumeroCitas(self):
+        return self.numero_completadas
+        
+    def setNumeroCitas(self, numero):
+        self.numero_completadas = numero
         
 
 class Enfermera:
