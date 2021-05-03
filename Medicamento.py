@@ -39,7 +39,7 @@ class Medicamento:
        return self.numero_vendidos
     
     def setNumeroVendidos(self,numero):
-        numero_vendidos = numero
+        self.numero_vendidos = numero
 
 class Comprado:
     
