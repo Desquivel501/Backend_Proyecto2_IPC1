@@ -1176,8 +1176,8 @@ def topEnfermedades():
     global Enfermedades
     
     
-    x = 5
-    if len(Enfermedades)<5:
+    x = 3
+    if len(Enfermedades)<3:
         x = len(Enfermedades)
     
     objeto={
@@ -1201,6 +1201,36 @@ def topEnfermedades():
         
     return jsonify(top)
 
+
+@app.route("/top_doctores", methods=["GET"])
+def topDoctores():
+    global Doctores
+    
+    
+    x = 5
+    if len(Doctores)<5:
+        x = len(Doctores)
+    
+    objeto={
+            "Mensaje":"Error"
+        }
+ 
+    aux = sorted(Doctores, key=attrgetter('numero_completadas'), reverse=True)
+    Datos=[]
+    
+    for i in range(x):
+        Datos.append(aux[i])
+        
+    top =[]
+    for doc in Datos:
+        objeto={
+            "Mensaje":"Completado",
+            "Nombre":doc.getNombre(),
+            "Cantidad":doc.getNumeroCitas()
+        }
+        top.append(objeto)
+        
+    return jsonify(top)
 
 
 if __name__ == "__main__":
