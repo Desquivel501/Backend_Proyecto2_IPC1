@@ -52,19 +52,6 @@ def rolSwitch(i):
     }
     return switcher.get(i)
 
-@app.route("/", methods=["GET"])
-def index():
-    return str(x)
-
-@app.route("/", methods=["POST"])
-def indexPost():
-    return "Mensaje desde POST"
-
-@app.route("/hello")
-def hello_page():
-    #print("Hello World")
-    return "<H2>Hello Again!</H2>"
-
 
 @app.route("/Users", methods=["GET"])
 def getUsuarios():
@@ -717,24 +704,6 @@ def loginPost():
             "Mensaje":"Usuario no existe"
         })
 
-    
-    
-
-@app.route("/doctor", methods=['GET'])
-def doctor_page():
-    return "You are a Doctor"
-
-@app.route("/patient", methods=['GET'])
-def patirnt_page():
-    return "You are a Patient"
-
-@app.route("/nurse", methods=['GET'])
-def nurse_page():
-    return "You are a Nurse"
-
-@app.route("/Login", methods=["GET"])
-def login():
-    return "You are login in"
 
 
 @app.route("/carga_pacientes", methods=["POST"])
