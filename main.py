@@ -598,8 +598,8 @@ def pedido():
     for comprado in compra_actual:
         for Medicamento in Medicamentos:
             if comprado.getId_med() == Medicamento.getId():
-                Medicamento.setCantidad(Medicamento.getCantidad()-comprado.getCantidad())
-                Medicamento.setNumeroVendidos(comprado.getCantidad())
+                Medicamento.setCantidad(int(Medicamento.getCantidad())-int(comprado.getCantidad()))
+                Medicamento.setNumeroVendidos(int(comprado.getCantidad()))
                 objeto = {
                     "Nombre":Medicamento.getNombre(),
                     "Descripcion":Medicamento.getDescripcion(),
@@ -1141,7 +1141,7 @@ def topMedicinas():
     if len(Medicamentos)<5:
         x = len(Medicamentos)
  
-    aux = sorted(Medicamentos,key=lambda medicamento: medicamento.numero_vendidos)
+    aux = sorted(Medicamentos, key=attrgetter('numero_vendidos'), reverse=True)
     Datos=[]
     
     for i in range(x):
