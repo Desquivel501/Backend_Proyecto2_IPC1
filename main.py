@@ -1164,7 +1164,7 @@ def topMedicinas():
     for med in Datos:
         objeto={
             "Mensaje":"Completado",
-            "Nombre":med.getNombre()
+            "Nombre":med.getNombre(),
             "Cantidad":med.getNumeroVendidos()
         }
         top.append(objeto)
