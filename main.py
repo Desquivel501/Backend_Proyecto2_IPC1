@@ -30,10 +30,10 @@ Enfermeras.append(Enfermera(4,"Nick","Marx","1999-05-30","F","Commies","password
 
 Doctores = []
 Doctores.append(Doctor(0,"Thomas ","Brown","1979-04-11","M","DocBrown","password","22522221","Cardiologo",0))
-Doctores.append(Doctor(1,"James ","Davis ","1985-01-12","M","J1mmy2","password","23269070",2,0))
-Doctores.append(Doctor(2,"Sophie ","Davis ","1989-12-20","F","Sofi10","password","56236587",0,0))
-Doctores.append(Doctor(3,"William ","Garcia","1990-03-08","M","WillyG","password","55286900",1,0))
-Doctores.append(Doctor(4,"Olivia ","Brown ","1979-09-29","F","Liv3","password","22230010",2,0))
+Doctores.append(Doctor(1,"James ","Davis ","1985-01-12","M","J1mmy2","password","23269070","Traumatologo",0))
+Doctores.append(Doctor(2,"Sophie ","Davis ","1989-12-20","F","Sofi10","password","56236587","Pediatra",0))
+Doctores.append(Doctor(3,"William ","Garcia","1990-03-08","M","WillyG","password","55286900","Cirujano",0))
+Doctores.append(Doctor(4,"Olivia ","Brown ","1979-09-29","F","Liv3","password","22230010","Dermatologo",0))
 
 Medicamentos = []
 Medicamentos.append(Medicamento(0,"Panadol","Lorem ipsum dolor sit amet",50,12,0))
@@ -800,7 +800,7 @@ def cargaMedicamentos():
 
 
 Citas = []
-Citas.append(Cita(len(Citas)+1,"Desquivel501","2021/9/12","12:00","Test","Pendiente",""))
+Citas.append(Cita(len(Citas)+1,"Desquivel501","2021/9/12","12:00","Fiebre","Pendiente",""))
 
 @app.route("/Cita", methods=["POST"])
 def crearCita():
