@@ -95,6 +95,7 @@ def agregarUsuario():
         "User_name":user_name,
         "User_pass":user_pass,
         "Telefono":telefono
+        "Mensaje":"Creado"
     }
     
     for obj in Usuarios:
@@ -116,7 +117,7 @@ def agregarUsuario():
     if user_exist == True:
         print("User Exist")
         return jsonify({
-            "Mensaje":"User alredy exist"
+            "Mensaje":"El nombre de usuario ya esta en uso"
         })
     elif user_exist == False:
         Usuarios.append(nuevo)
