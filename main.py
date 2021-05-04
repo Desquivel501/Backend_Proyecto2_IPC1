@@ -1084,8 +1084,6 @@ def verCitasDoc(name):
     
     return jsonify(Datos)
 
-
-
 Facturas=[]
 
 @app.route("/Factura", methods=["POST"])
