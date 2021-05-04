@@ -373,6 +373,7 @@ def borrarEbf(username):
             "Mensaje":"Se ha eliminado el usuario"
         })
  
+ 
 @app.route("/admin/<string:username>", methods=['POST'])
 def setAdmin(username):
     global Administrador
@@ -406,6 +407,7 @@ def getAdmin(username):
 
 compra_actual=[]
 compra_total=[]
+
 
 @app.route("/Med", methods=["GET"])
 def getMedicamentos():
@@ -488,7 +490,7 @@ def borrarMedicamento(id_med):
     aux = []
     
     for Medicamento in Medicamentos:
-        if int(id_med) != int(Medicamento.getId()):
+        if int(med_id) != int(Medicamento.getId()):
             aux.append(Medicamento)
     
     Medicamentos = aux
