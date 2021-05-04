@@ -94,7 +94,7 @@ def agregarUsuario():
         "Sexo":sexo,
         "User_name":user_name,
         "User_pass":user_pass,
-        "Telefono":telefono
+        "Telefono":telefono,
         "Mensaje":"Creado"
     }
     
