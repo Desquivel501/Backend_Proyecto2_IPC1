@@ -52,6 +52,11 @@ def rolSwitch(i):
     }
     return switcher.get(i)
 
+@app.route("/")
+def index():
+    return ("<h1>Enlace Frontend: https://frontend-ipc1-202010055.herokuapp.com/</h1>")
+
+
 
 @app.route("/Users", methods=["GET"])
 def getUsuarios():
